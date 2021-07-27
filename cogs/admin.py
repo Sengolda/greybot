@@ -1,9 +1,11 @@
 from discord.ext import commands
-from jishaku.codeblocks import codeblock_converter as Codeblock
 from discord.ext.commands.context import Context
+from jishaku.codeblocks import codeblock_converter as Codeblock
+
 from .utils._types import *
 
 Extension = str
+
 
 class Admin(Cog):
     async def cog_check(self, ctx: Context) -> bool:
@@ -74,7 +76,6 @@ class Admin(Cog):
             raise commands.CommandNotFound()
         else:
             await ctx.invoke(jsk_reload, *extensions)
-
 
     @commands.command(aliases=["logout", "exit"], hidden=True)
     async def restart(self, ctx: Context):

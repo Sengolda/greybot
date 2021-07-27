@@ -1,5 +1,6 @@
 from pydantic import BaseSettings as BS
 
+
 class BotConfig(BS):
     token: str
 

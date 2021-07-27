@@ -1,0 +1,4 @@
+pydantic
+discord.py
+aiosqlite
+jishaku
