@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/Users/senushka/Library/Python/3.9/lib/python/site-packages/discord/ext/commands/core.py", line 84, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/Users/senushka/Downloads/Golden-Utils/dockerfiles/greybot/cogs/info.py", line 20, in role_info
+    embed = discord.Embed(role.name)
+TypeError: __init__() takes 1 positional argument but 2 were given
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/senushka/Library/Python/3.9/lib/python/site-packages/discord/ext/commands/bot.py", line 986, in invoke
+    await ctx.command.invoke(ctx)
+  File "/Users/senushka/Library/Python/3.9/lib/python/site-packages/discord/ext/commands/core.py", line 876, in invoke
+    await injected(*ctx.args, **ctx.kwargs)
+  File "/Users/senushka/Library/Python/3.9/lib/python/site-packages/discord/ext/commands/core.py", line 93, in wrapped
+    raise CommandInvokeError(exc) from exc
+discord.ext.commands.errors.CommandInvokeError: Command raised an exception: TypeError: __init__() takes 1 positional argument but 2 were given
