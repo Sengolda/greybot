@@ -34,8 +34,7 @@ class Info(Cog):
         )
 
         if ctx.guild.chunked:
-            role_members = [i for i in role.members]
-            embed.add_field(name="Members:", value=len(role_members), inline=False)
+            embed.add_field(name="Members:", value=len(role.members), inline=False)
 
         await ctx.send(embed=embed)
 
