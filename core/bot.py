@@ -17,7 +17,7 @@ logging.basicConfig(
 )
 
 
-class BotBase(commands.bot.BotBase,discord.Client):
+class BotBase(commands.bot.BotBase, discord.Client):
     def __init__(self):
         self.config = bot_config
         self.start_time = dt.datetime.now(dt.timezone.utc)
@@ -43,12 +43,7 @@ class BotBase(commands.bot.BotBase,discord.Client):
 
     @property
     def owner(self):
-        return_owners = []
-        for owner in self.owners:
-            users = self.get_user(owner)
-            return_owners.append(users)
-
-        return return_owners
+        return [self.get_user(owner) for owner in self.owners]
 
     async def on_ready(self) -> None:
         logging.info(f"Succesfully logged in as {self.user} ({self.user.id})")
@@ -64,7 +59,6 @@ class BotBase(commands.bot.BotBase,discord.Client):
 
         ctx = await self.get_context(message)
         await self.invoke(ctx)
-    
 
     async def get_context(self, message, *, cls=Context):
         return await super().get_context(message, cls=cls)
