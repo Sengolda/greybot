@@ -8,6 +8,7 @@ class Cog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+
 Emoji = Union[
     discord.Emoji,
     str,

@@ -4,10 +4,7 @@ from discord.ext import commands
 import discord
 import io
 
-from typing import (
-    TYPE_CHECKING,
-    Union
-    )
+from typing import TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from discord.asset import ValidAssetFormatTypes
@@ -16,14 +13,12 @@ if TYPE_CHECKING:
 __all__ = ("Context",)
 
 
-
 CHECK_MARK = "\N{WHITE HEAVY CHECK MARK}"
 
 
 class Context(commands.Context):
     def __init__(self, **attrs):
         super().__init__(**attrs)
-    
 
     def reply(self, *args, **kwargs):
         mention_author = kwargs.pop("mention_author", True)
@@ -34,18 +29,20 @@ class Context(commands.Context):
 
         if guild.get_member(self.author):
             return True
-        
+
         else:
             return False
-    
-    async def _get_previous_message(self, message: discord.Message,channel: discord.TextChannel = None):
+
+    async def _get_previous_message(
+        self, message: discord.Message, channel: discord.TextChannel = None
+    ):
         channel = channel or self.channel
         async for msg in channel.history(before=message, limit=1):
             return msg
-    
 
-    async def download_attachment(message: discord.Message, *, index: int = 0) -> io.BytesIO:
+    async def download_attachment(
+        message: discord.Message, *, index: int = 0
+    ) -> io.BytesIO:
         attachment = io.BytesIO()
         await message.attachments[index].save(attachment)
         return attachment
-    
